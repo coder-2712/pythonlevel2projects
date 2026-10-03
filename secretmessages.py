@@ -1,4 +1,5 @@
 import sys
+letters ='abcdefghijklmnopqrstuvwxyz'
 def even_odd_swap(x):
     if len(x)%2!=0:
         x = x + ' '
@@ -45,6 +46,18 @@ def reverse_word(x):
     for kk in range(len(words)):
         s = s+reverse(words[kk])+' '
     return s
+
+def atbash_cipher(x) :
+    s=''
+    for i in range(len(x)):
+        if x[i] == ' ':
+            s = s+' '
+        else:
+            idx = letters.find(x[i])
+            new_idx = 25 - idx
+            s = s + letters[new_idx]
+    return s
+
 print("You are a top astrophysicist who has just recieved a message from space!")
 print("However, the signal has gotten mixed up and some of the message is lost...")
 print("All that was left was 'WE ARE COMING AT'. The rest of the message is scrambled!")
@@ -53,22 +66,25 @@ print("The human race's survival depends on decoding this message. You can reshu
 print("Humanity is counting on you. No pressure or anything though.")
 print("enter the time below in words. if the answer is wrong a shuffled statement will come out. You have five tries.")
 print("Note: enter time in numbers format X:YZ AM/PM")
-x = 'nine fifteen pm please be ready we expect a great welcome party'
+x = 'we will be here at nine fifteen pm please be ready we expect a great welcome party'
+
+aa= atbash_cipher('catcat')
+
 x_even_odd = even_odd_swap(x)
 print(x_even_odd)
 
 answer = input("whats the time?")
-if answer == "9:15 PM" or "9:15PM" or "9:15 pm" or "9:15pm":
+if answer == "9:15 PM":
     print("That's right! Good Job!")
     sys.exit("Well, you should get ready now. Bye!")
 else:
     print("Wrong! try again with another mix-up!")
     x_rev = reverse(x)
     print(x_rev)
-    seocndtry = input("whats the time?")
+    secondtry = input("whats the time?")
 
 
-if secondtry == "9:15 PM" or "9:15PM" or "9:15 pm" or "9:15pm":
+if secondtry == "9:15 PM":
     print("That's right! Good Job!")
     sys.exit("Well, you should get ready now. Bye!")
 else:
@@ -77,7 +93,7 @@ else:
     print(x_rev_word)
     thirdtry = input("whats the time?")
 
-if sthirdtry == "9:15 PM" or "9:15PM" or "9:15 pm" or "9:15pm":
+if thirdtry == "9:15 PM":
     print("That's right! Good Job!")
     sys.exit("Well, you should get ready now. Bye!")
 else:
@@ -86,7 +102,7 @@ else:
     print(x_swap_mid)
     fourthtry = input("whats the time?")
 
-if fourthtry == "9:15 PM" or "9:15PM" or "9:15 pm" or "9:15pm":
+if fourthtry == "9:15 PM":
     print("That's right! Good Job!")
     sys.exit("Well, you should get ready now. Bye!")
 else:
@@ -96,7 +112,17 @@ else:
     fifthtry = input("whats the time?")
     print()
 
-if fifthtry == "9:15 PM" or "9:15PM" or "9:15 pm" or "9:15pm":
+if fifthtry == "9:15 PM":
+    print("That's right! Good Job!")
+    sys.exit("Well, you should get ready now. Bye!")
+else:
+    print("Wrong! try again with another mix-up!")
+    x_atbash= atbash_cipher(x)
+    print(x_atbash)
+    sixthtry = input("whats the time?")
+    print()
+
+if sixthtry == "9:15 PM":
     print("That's right! Good Job!")
     sys.exit("Well, you should get ready now. Bye!")
 else:
