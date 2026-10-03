@@ -1,61 +1,74 @@
-# 🐍 WiByte Python Lab 1.1
+def even_odd_swap(x):
+    if len(x)%2!=0:
+        x = x + ' '
 
-Welcome to your coding environment! This lab is designed to help you master Python logic and computational thinking and work on the projects from the WiByte Python curriculum, available at www.wibyte.in, and beyond.  
+    even_letters = x[0::2]
+    odd_letters  = x[1::2]
+    s=''
 
-## 🐢 Updates in WiByte Python Lab 1.1
-* Refined Container creation -- moved post create pip installs to DockerFile
-* Improved Port setup -- You will see ONLY port 6080 now in the PORTS tab. 
-* Cleaner interface.
-* Recovery mechanism for VNC.
-* Distinct WiByte Python Lab 1.1 prompt.
+    for i in range(len(even_letters)):
+        s = s+odd_letters[i]
+        s = s+even_letters[i]
+    
+    return s
 
-## 🐢 How to RUN Your Work (for regular projects)
+def swap_middle(x):
+    if len(x)%2!=0:
+        x = x + ' '
 
-* **Option 1: Open the Terminal:** 
-  * Run python3 abc.py
-* **Option 2: RUN button** 
-  * You can also use the RUN button on top
+    first_half = x[0:int(len(x)/2):1]
+    second_half = x[int(len(x)/2)::1]
+    
+    s = ''
+    s = s + second_half 
+    s = s + first_half
+    return s
+    
+def reverse(x):
+    s = x[::-1]
+    return s
 
-## 🐢 How to See Project's graphical output (for Turtle/Tkinter)
+def swap_mid_rev(x):
+    s_swap = swap_middle(x)
+    s = reverse(s_swap)
+    return s
 
-This lab uses a dedicated virtual desktop to show your Turtle/Tkinter graphics.
+def swap_mid_rev_decode(x):
+    s_rev = reverse(x)
+    s = swap_middle(s_rev)
+    return s
 
-* **Open the Desktop:** Go to the **Ports** tab (next to the Terminal) and click the link for **Port 6080**.
-* **Port 6080** appears a few seconds after the workspace sets up**.
-* **Pro Tips:** 
-  * Show patience. Wait for port 6080 to appear before starting the project. 
-  * Check the terminal -- Make sure the project ran without any syntax/logic errors.
-  * Close the application -- NOT the browser before running again.
-  * This really does work like a breeze, but we need to be a bit patient!
+def reverse_word(x):
+    words = x.split(' ')
+    s = ''
+    for kk in range(len(words)):
+        s = s+reverse(words[kk])+' '
+    return s
 
+x = 'curiosity killed the cat'
+x_even_odd = even_odd_swap(x)
+print(x_even_odd)
 
----
-## 🛠️ AI Usage Guidelines
+input()
 
-Before you start coding, you must manually disable the **AI Auto-Pilot**. We want to see *your* logic, not the AI's suggestions! 
+x_rev = reverse(x)
+print(x_rev)
+input()
+x_rev_word = reverse_word(x)
+print(x_rev_word)
 
-Also, keep in mind, we are *not* looking for fully polished products, we are looking for *genuine evidence* of effort. 
+input()
 
-1. **Disable Ghost Text:** 
-   * Look at the **bottom-right corner** of your screen.
-   * Click the small **Copilot Icon** (the pilot's head).
-   * Select **"Disable Completions"** from the menu.
-   * *If you see gray text appearing while you type, repeat this step.*
+x_swap_mid = swap_middle(x)
+print(x_swap_mid)
 
-2. **No "Magic" Fixes:**
-   * If you make a mistake, you will see a red underline. 
-   * We have disabled the "Lightbulb" auto-fix. You must read your code, identify the error, and fix it yourself. This is how you become a pro!
+input()
+x_swap_mid_rev = swap_mid_rev(x)
+print(x_swap_mid_rev)
+input()
+print()
 
----
-
-## 🤖 Using the AI Assistant (The Right Way)
-
-You still have access to the **Copilot Chat** on the right sidebar. Use it like a teaching assistant:
-
-* ✅ **DO ask:** "What is the logic for a binary search?" or "Can you give me a hint for this syntax error?"
-* ❌ **DON'T ask:** "Write the code for a square."
-* 💡 **Remember:** The Chat is meant to give you **Pseudocode and Hints** only. Use those hints to write the actual Python code yourself.
-
----
-
-**Let's build something great. Forever, enjoy coding!**
+print(even_odd_swap(x_even_odd))
+print(reverse(x_rev))
+print(reverse_word(x_rev_word))
+print()
