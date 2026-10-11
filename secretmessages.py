@@ -68,7 +68,6 @@ print("enter the time below in words. if the answer is wrong a shuffled statemen
 print("Note: enter time in numbers format X:YZ AM/PM")
 x = 'we will be here at nine fifteen pm please be ready we expect a great welcome party'
 
-aa= atbash_cipher('catcat')
 
 x_even_odd = even_odd_swap(x)
 print(x_even_odd)

@@ -1,5 +1,6 @@
 import random
 letters='abcdefghijklmnopqrstuvwxyz'
+viginere= []
 
 def even_odd_swap(x):
     if len(x)%2!=0:
@@ -76,21 +77,22 @@ def viginere_cipher(x,key):
             s = s+' '
         else:
             idx=letters.find(x[i])
-            new_idx = (idx+key[i%len(key)])
+            new_idx = (idx+key[i%len(key)]) % 26
             s = s+letters[new_idx]
     return s
 
 def viginere_cipherdecode(x,key):
     dkey=[0]* len(key)
+    s=''
     for i in range(len(key)):
         dkey[i] = 26-key[i]
-        s=''
+    
     for i in range(len(x)):
         if x[i] == ' ':
             s = s+' '
         else:
             idx=letters.find(x[i])
-            new_idx = (idx+dkey[i%len(dkey)])
+            new_idx = (idx+dkey[i%len(dkey)]) % 26
             s = s+letters[new_idx]
     return s
 
@@ -109,66 +111,72 @@ for kk in range(10):
 
 msg = msg + secret_code
 
-# Pick one of the four operations
-encoder = random.randint(0, 4)
-encoder = 0
-if encoder == 0:
-    msg_enc = msg
-elif encoder == 1:
-    msg_enc = even_odd_swap(msg)
-elif encoder == 2:
-    msg_enc = reverse(msg)
-elif encoder == 3:
-    msg_enc = swap_middle(msg)
-else:
-    msg_enc = atbash_cipher(msg)
-
-
-
 
 i = 1
 viginere= []
-while i<5:
-    viginere.append(random.randint(1,10))
+while i < 5:
+    b=random.randint(0,10)
+    viginere.append(b)
+    i+=1
+
 decider = random.randint(0,1)
 if decider == 0:
-    msg_enemy = caesar_cipher(msg_enc, random.randint(1, 25))
+    msg_enc = caesar_cipher(msg, random.randint(1, 25))
 else:
-    msg_enemy = viginere_cipher(msg_enc, viginere)
+    msg_enc = viginere_cipher(msg, viginere)
+
+encoder = 0
+encoder = random.randint(0, 4)
+if encoder == 0:
+    msg_enemy = msg_enc
+elif encoder == 1:
+    msg_enemy = even_odd_swap(msg_enc)
+elif encoder == 2:
+    msg_enemy = reverse(msg_enc)
+elif encoder == 3:
+    msg_enemy = swap_middle(msg_enc)
+else:
+    msg_enemy = atbash_cipher(msg_enc)
+
+
+
+
 print()
 print('I am hearing ...')
 print(msg_enemy)
 print()
 
-for kk in range(1, 26):
-    msg_dec = caesar_cipher(msg_enemy, kk)
-    msg_dec_eo = even_odd_swap(msg_dec)
-    msg_dec_r  = reverse(msg_dec)
-    msg_dec_ms = swap_middle(msg_dec)
-    msg_dec_a = atbash_cipher(msg_dec)
-    
-    if msg_dec[0:20:1]=='plane incoming today':
-        print('code cracked ...')
-        print('Secret code is ...')
-        print(msg_dec[20::1])
+
+found = False
+
+possible_msgs = [
+    msg_enemy,
+    even_odd_swap(msg_enemy),
+    reverse(msg_enemy),
+    swap_middle(msg_enemy),
+    atbash_cipher(msg_enemy)
+]
+
+for possible_msg in possible_msgs:
+    for kk in range(1, 26):
+        msg_dec = caesar_cipher(possible_msg, kk)
+        if msg_dec[0:20:1] == 'plane incoming today':
+            print('code cracked ...')
+            print('Secret code is ...')
+            print(msg_dec[0:20:1])
+            found = True
+            break
+
+    if found:
         break
-    elif msg_dec_eo[0:20:1]=='plane incoming today':
-        print('code cracked ...')
-        print('Secret code is ...')
-        print(msg_dec_eo[20::1])
-        break
-    elif msg_dec_r[0:20:1]=='plane incoming today':
-        print('code cracked ...')
-        print('Secret code is ...')
-        print(msg_dec_r[20::1])
-        break
-    elif msg_dec_ms[0:20:1]=='plane incoming today':
-        print('code cracked ...')
-        print('Secret code is ...')
-        print(msg_dec_ms[20::1])
-        break
-    elif msg_dec_a[0:20:1]=='plane incoming today':
-        print('code cracked ...')
-        print('Secret code is ...')
-        print(msg_dec_ms[20::1])
-        break
+
+if not found:
+    for possible_msg in possible_msgs:
+        msg_dec = viginere_cipherdecode(possible_msg, viginere)
+
+        if msg_dec[0:20:1] == 'plane incoming today':
+            print('code cracked ...')
+            print('Secret code is ...')
+            print(msg_dec[0:20:1])
+            found = True
+            break
