@@ -67,22 +67,152 @@ try:
 
             print("You are", a, "years old as of now.")
 
-            famous_ppl_bdays = ["J. D. Salinger", "Isaac Asimov", "J. R. R. Tolkien", "Isaac Newton", "Diane Keaton", "Rowan Atkinson", "Nicolas Cage", "Elvis Presley", "Kate Middleton", "Rod Stewart", "Mary J. Blige", "Jeff Bezos", "Orlando Bloom", "Jason Bateman", "Martin Luther King Jr.", "Kate Moss", "Benjamin Franklin", "Kevin Costner", "Edgar Allan Poe", "David Lynch", "Emma Bunton", "Lord Byron", "Tiffani Thiessen", "Neil Diamond", "Virginia Woolf", "Ellen DeGeneres", "Wolfgang Amadeus Mozart", "Elijah Wood", "Oprah Winfrey", "Franklin D. Roosevelt", "Justin Timberlake", "Harry Styles", "Shakira", "Warwick Davis", "Rosa Parks", "Cristiano Ronaldo", "Bob Marley", "Charles Dickens", "James Dean", "Tom Hiddleston", "Emma Roberts", "Thomas Edison", "Charles Darwin", "Peter Gabriel", "Frederick Douglass", "Galileo Galilei", "John McEnroe", "Michael Jordan", "John Travolta", "Millie Bobby Brown", "Rihanna", "Nina Simone", "George Washington", "Emily Blunt", "Steve Jobs", "George Harrison", "Johnny Cash", "John Steinbeck", "John Turturro", "Gioachino Rossini", "Justin Bieber", "Dr. Seuss", "Alexander Graham Bell", "Antonio Vivaldi", "Eva Mendes", "Michelangelo", "Bryan Cranston", "Freddie Prinze Jr.", 
-                                "Yuri Gagarin", "Sharon Stone", "Douglas Adams", "Liza Minnelli", "William H. Macy", "Albert Einstein", "Eva Longoria", "Alexandra Daddario", "Rob Lowe", "Queen Latifah", "Bruce Willis", "Spike Lee", "Johann Sebastian Bach", "Reese Witherspoon", "Akira Kurosawa", "Harry Houdini", "Elton John", "Diana Ross", "Quentin Tarantino", "Lady Gaga", "Christopher Lambert", "Vincent van Gogh", "René Descartes", "Sergei Rachmaninoff", "Hans Christian Andersen", "Marlon Brando", "Maya Angelou", "Gregory Peck", "Paul Rudd", "Russell Crowe", "Kristen Stewart", "Mandy Moore", "Joss Stone", "David Letterman",
-                                "Thomas Jefferson", "Sarah Michelle Gellar", "Leonardo da Vinci", "Charlie Chaplin", "Jennifer Garner", "Conan O'Brien", "James Franco", "Adolf Hitler", "Queen Elizabeth II", "Jack Nicholson", "William Shakespeare", "Barbra Streisand", "Al Pacino", "Carol Burnett", "Ulysses S. Grant", "Jessica Alba", "Uma Thurman", "Gal Gadot", "Tim McGraw", "Dwayne Johnson", "James Brown", "Audrey Hepburn", "Adele", "George Clooney", "Pyotr Tchaikovsky", "Enrique Iglesias", "Billy Joel", "Bono", "Salvador Dalí", "Florence Nightingale", "Stevie Wonder", "George Lucas", "Andy Murray", "Megan Fox", "Enya", 
-                                "Tina Fey", "Malcolm X", "Cher", "Mr. T", "Arthur Conan Doyle", "Joan Collins", "Queen Victoria", "Mike Myers", "Helena Bonham Carter", "Christopher Lee", "Kylie Minogue", "John F. Kennedy", "Idina Menzel", "Clint Eastwood", "Marilyn Monroe", "Justin Long", "Josephine Baker", "Angelina Jolie", "Mark Wahlberg", "Alexander Pushkin", "Prince", "Kanye West", "Johnny Depp", "Judy Garland", "Jacques Cousteau", "Anne Frank", "Chris Evans", "Che Guevara", "Courteney Cox", "Tupac Shakur", "Venus Williams", "Isabella Rossellini", "Hugh Dancy", "Nicole Kidman", "Chris Pratt", "Meryl Streep", "Zinedine Zidane", 
-                                "Lionel Messi", "George Michael", "Ariana Grande", "Helen Keller", "Mel Brooks", "Antoine de Saint-Exupéry", "Mike Tyson", "Princess Diana", "Margot Robbie", "Tom Cruise", "Nathaniel Hawthorne", "Edie Falco", "Frida Kahlo", "Ringo Starr", "Kevin Bacon", "Tom Hanks", "Nikola Tesla", "Giorgio Armani", "Henry David Thoreau", "Harrison Ford", "Gustav Klimt", "Rembrandt", "Will Ferrell", "Luke Bryan", "Nelson Mandela", "Benedict Cumberbatch", "Carlos Santana", "Ernest Hemingway", "Selena Gomez", "Daniel Radcliffe", "Amelia Earhart", "Matt LeBlanc", "Mick Jagger", "Alexandre Dumas", "Jacqueline Kennedy Onassis", 
-                                "Fernando Alonso", "Arnold Schwarzenegger", "J. K. Rowling", "Jason Momoa", "James Baldwin", "Tom Brady", "Barack Obama", "Neil Armstrong", "Andy Warhol", "David Duchovny", "Roger Federer", "Whitney Houston", "Antonio Banderas", "Chris Hemsworth", "Cara Delevingne", "Alfred Hitchcock", "Steve Martin", "Jennifer Lawrence", "Madonna", "Robert De Niro", "Patrick Swayze", "Bill Clinton", "H. P. Lovecraft", "Usain Bolt", "Dua Lipa", "Kobe Bryant", "Rupert Grint", "Sean Connery", "Macaulay Culkin", "Lyndon B. Johnson", "Jack Black", "Michael Jackson", "Cameron Diaz", "Richard Gere", "Zendaya", "Keanu Reeves", 
-                                "Charlie Sheen", "Beyoncé", "Freddie Mercury", "Idris Elba", "Queen Elizabeth I", "Pink", "Adam Sandler", "Colin Firth", "O. Henry", "Jesse Owens", "Roald Dahl", "Amy Winehouse", "Agatha Christie", "Mickey Rourke", "Narendra Modi", "Greta Garbo", "Jimmy Fallon", "George R. R. Martin", "Stephen King", "Tom Felton", "Bruce Springsteen", "F. Scott Fitzgerald", "Catherine Zeta-Jones", "Serena Williams", "Avril Lavigne", "Brigitte Bardot", "Miguel de Cervantes", "Monica Bellucci", "Julie Andrews", "Mahatma Gandhi", "Gwen Stefani", "Dakota Johnson", "Kate Winslet", "Le Corbusier", "Simon Cowell", "Matt Damon", 
-                                "John Lennon", "Giuseppe Verdi", "Eleanor Roosevelt", "Hugh Jackman", "Sacha Baron Cohen", "Usher", "Oscar Wilde", "Angela Lansbury", "Rita Hayworth", "Zac Efron", "John le Carré", "Snoop Dogg", "Kim Kardashian", "Catherine Deneuve", "Pelé", "Dracula", "Pablo Picasso", "Hillary Clinton", "Sylvia Plath", "Bill Gates", "Bob Ross", "Diego Maradona", "John Keats", "Anthony Kiedis", "David Schwimmer", "Kendall Jenner", "Matthew McConaughey", "Art Garfunkel", "Emma Stone", "Marie Curie", "Gordon Ramsay", "Carl Sagan", "Martin Luther", "Leonardo DiCaprio", "Anne Hathaway", "Robert Louis Stevenson", "Claude Monet", 
-                                "Georgia O'Keeffe", "Maggie Gyllenhaal", "Martin Scorsese", "Owen Wilson", "Indira Gandhi", "Joe Biden", "Goldie Hawn", "Scarlett Johansson", "Miley Cyrus", "Katherine Heigl", "Andrew Carnegie", "Rita Ora", "Bruce Lee", "Jon Stewart", "C. S. Lewis", "Mark Twain", "Woody Allen", "Britney Spears", "Brendan Fraser", "Jay-Z", "Walt Disney", "Judd Apatow", "Noam Chomsky", "Nicki Minaj", "Judi Dench", "Emily Dickinson", "Hailee Steinfeld", "Frank Sinatra", "Taylor Swift", "Vanessa Hudgens", "Don Johnson", "Jane Austen", "Milla Jovovich", "Brad Pitt", "Jake Gyllenhaal", "Jonah Hill", "Samuel L. Jackson",
-                                "Giacomo Puccini", "Humphrey Bogart", "Ricky Martin", "Annie Lennox", "Jared Leto", "Timothée Chalamet", "Denzel Washington", "Jude Law", "LeBron James", "Anthony Hopkins"]
+
+            def zodiac_sign(day, month):
+                if (month == 12 and day >= 22) or (month == 1 and day <= 19):
+                    return "Capricorn:"," Ambitious, disciplined, and hard-working traditionalists."
+                elif (month == 1 and day >= 20) or (month == 2 and day <= 18):
+                    return"Aquarius:"," Independent, innovative, and forward-thinking."
+                elif (month == 2 and day >= 19) or (month == 3 and day <= 20):
+                    return "Pisces","Imaginative, empathetic, and dreamy."
+                elif (month == 3 and day >= 21) or (month == 4 and day <= 19):
+                    return  "Aries:", "Bold, independent, and energetic; can be impulsive."
+                elif (month == 4 and day >= 20) or (month == 5 and day <= 20):
+                    return "Taurus:","Dependable, patient, and value stability; can be stubborn."
+                elif (month == 5 and day >= 21) or (month == 6 and day <= 20):
+                    return "Gemini:"," Curious, witty, and adaptable; can be inconsistent."
+                elif (month == 6 and day >= 21) or (month == 7 and day <= 22):
+                    return "Cancer:","Caring, nurturing, and deeply connected to family; can be moody."
+                elif (month == 7 and day >= 23) or (month == 8 and day <= 22):
+                    return "Leo:", "Confident, charismatic, and natural leaders who love the spotlight."
+                elif (month == 8 and day >= 23) or (month == 9 and day <= 22):
+                    return "Virgo:"," Analytical, practical, and detail-oriented; can be critical."
+                elif (month == 9 and day >= 23) or (month == 10 and day <= 22):
+                    return "Libra:"," Charming, diplomatic, and balance-seeking; dislikes conflict."
+                elif (month == 10 and day >= 23) or (month == 11 and day <= 21):
+                    return "Scorpio:","Passionate, mysterious, and deeply loyal; can be private or intense."
+                else:
+                    return "Sagittarius:"," Adventurous, optimistic, and free-spirited; can be blunt."
+
+            zodiac = zodiac_sign(day, month)
+            print("You are born under the sign of", zodiac)
+
+            famous_ppl_bdays = [
+            "J. D. Salinger", "Isaac Asimov", "J. R. R. Tolkien", "Isaac Newton",
+            "Diane Keaton", "Rowan Atkinson", "Nicolas Cage", "Elvis Presley",
+            "Kate Middleton", "Rod Stewart", "Mary J. Blige", "Jeff Bezos",
+            "Orlando Bloom", "Jason Bateman", "Martin Luther King Jr.", "Kate Moss",
+            "Benjamin Franklin", "Kevin Costner", "Edgar Allan Poe", "David Lynch",
+            "Emma Bunton", "Lord Byron", "Tiffani Thiessen", "Neil Diamond",
+            "Virginia Woolf", "Ellen DeGeneres", "Wolfgang Amadeus Mozart", "Elijah Wood",
+            "Oprah Winfrey", "Franklin D. Roosevelt", "Justin Timberlake",
+
+            "Harry Styles", "Shakira", "Warwick Davis", "Rosa Parks",
+            "Cristiano Ronaldo", "Bob Marley", "Charles Dickens", "James Dean",
+            "Tom Hiddleston", "Emma Roberts", "Thomas Edison", "Charles Darwin",
+            "Peter Gabriel", "Frederick Douglass", "Galileo Galilei", "John McEnroe",
+            "Michael Jordan", "John Travolta", "Millie Bobby Brown", "Rihanna",
+            "Nina Simone", "George Washington", "Emily Blunt", "Steve Jobs",
+            "George Harrison", "Johnny Cash", "John Steinbeck", "John Turturro",
+            "Gioachino Rossini",
+
+            "Justin Bieber", "Dr. Seuss", "Alexander Graham Bell", "Antonio Vivaldi",
+            "Eva Mendes", "Michelangelo", "Bryan Cranston", "Freddie Prinze Jr.",
+            "Yuri Gagarin", "Sharon Stone", "Douglas Adams", "Liza Minnelli",
+            "William H. Macy", "Albert Einstein", "Eva Longoria", "Alexandra Daddario",
+            "Rob Lowe", "Queen Latifah", "Bruce Willis", "Spike Lee",
+            "Johann Sebastian Bach", "Reese Witherspoon", "Akira Kurosawa", "Harry Houdini",
+            "Elton John", "Diana Ross", "Quentin Tarantino", "Lady Gaga",
+            "Christopher Lambert", "Vincent van Gogh", "René Descartes",
+
+            "Sergei Rachmaninoff", "Hans Christian Andersen", "Marlon Brando",
+            "Maya Angelou", "Gregory Peck", "Paul Rudd", "Russell Crowe",
+            "Patricia Arquette", "Kristen Stewart", "Mandy Moore", "Joss Stone",
+            "David Letterman", "Thomas Jefferson", "Sarah Michelle Gellar",
+            "Leonardo da Vinci", "Charlie Chaplin", "Jennifer Garner", "Conan O'Brien",
+            "James Franco", "Adolf Hitler", "Queen Elizabeth II", "Jack Nicholson",
+            "William Shakespeare", "Barbra Streisand", "Al Pacino", "Carol Burnett",
+            "Ulysses S. Grant", "Jessica Alba", "Uma Thurman", "Gal Gadot",
+
+            "Tim McGraw", "Dwayne Johnson", "James Brown", "Audrey Hepburn",
+            "Adele", "George Clooney", "Pyotr Tchaikovsky", "Enrique Iglesias",
+            "Billy Joel", "Bono", "Salvador Dalí", "Florence Nightingale",
+            "Stevie Wonder", "George Lucas", "Andy Murray", "Megan Fox", "Enya",
+            "Tina Fey", "Malcolm X", "Cher", "Mr. T", "Arthur Conan Doyle",
+            "Joan Collins", "Queen Victoria", "Mike Myers", "Helena Bonham Carter",
+            "Christopher Lee", "Kylie Minogue", "John F. Kennedy", "Idina Menzel",
+            "Clint Eastwood",
+
+            "Marilyn Monroe", "Justin Long", "Josephine Baker", "Angelina Jolie",
+            "Mark Wahlberg", "Alexander Pushkin", "Prince", "Kanye West",
+            "Johnny Depp", "Judy Garland", "Jacques Cousteau", "Anne Frank",
+            "Chris Evans", "Che Guevara", "Courteney Cox", "Tupac Shakur",
+            "Venus Williams", "Isabella Rossellini", "Hugh Dancy", "Nicole Kidman",
+            "Chris Pratt", "Meryl Streep", "Zinedine Zidane", "Lionel Messi",
+            "George Michael", "Ariana Grande", "Helen Keller", "Mel Brooks",
+            "Antoine de Saint-Exupéry", "Mike Tyson",
+
+            "Princess Diana", "Margot Robbie", "Tom Cruise", "Nathaniel Hawthorne",
+            "Edie Falco", "Frida Kahlo", "Ringo Starr", "Kevin Bacon",
+            "Tom Hanks", "Nikola Tesla", "Giorgio Armani", "Henry David Thoreau",
+            "Harrison Ford", "Gustav Klimt", "Rembrandt", "Will Ferrell",
+            "Luke Bryan", "Nelson Mandela", "Benedict Cumberbatch", "Carlos Santana",
+            "Ernest Hemingway", "Selena Gomez", "Daniel Radcliffe", "Amelia Earhart",
+            "Matt LeBlanc", "Mick Jagger", "Alexandre Dumas",
+            "Jacqueline Kennedy Onassis", "Fernando Alonso", "Arnold Schwarzenegger",
+            "J. K. Rowling",
+
+            "Jason Momoa", "James Baldwin", "Tom Brady", "Barack Obama",
+            "Neil Armstrong", "Andy Warhol", "David Duchovny", "Roger Federer",
+            "Whitney Houston", "Antonio Banderas", "Chris Hemsworth", "Cara Delevingne",
+            "Alfred Hitchcock", "Steve Martin", "Jennifer Lawrence", "Madonna",
+            "Robert De Niro", "Patrick Swayze", "Bill Clinton", "H. P. Lovecraft",
+            "Usain Bolt", "Dua Lipa", "Kobe Bryant", "Rupert Grint", "Sean Connery",
+            "Macaulay Culkin", "Lyndon B. Johnson", "Jack Black", "Michael Jackson",
+            "Cameron Diaz", "Richard Gere",
+
+            "Zendaya", "Keanu Reeves", "Charlie Sheen", "Beyoncé", "Freddie Mercury",
+            "Idris Elba", "Queen Elizabeth I", "Pink", "Adam Sandler", "Colin Firth",
+            "O. Henry", "Jesse Owens", "Roald Dahl", "Amy Winehouse", "Agatha Christie",
+            "Mickey Rourke", "Narendra Modi", "Greta Garbo", "Jimmy Fallon",
+            "George R. R. Martin", "Stephen King", "Tom Felton", "Bruce Springsteen",
+            "F. Scott Fitzgerald", "Catherine Zeta-Jones", "Serena Williams",
+            "Avril Lavigne", "Brigitte Bardot", "Miguel de Cervantes", "Monica Bellucci",
+
+            "Julie Andrews", "Mahatma Gandhi", "Gwen Stefani", "Dakota Johnson",
+            "Kate Winslet", "Le Corbusier", "Simon Cowell", "Matt Damon",
+            "John Lennon", "Giuseppe Verdi", "Eleanor Roosevelt", "Hugh Jackman",
+            "Sacha Baron Cohen", "Usher", "Oscar Wilde", "Angela Lansbury",
+            "Rita Hayworth", "Zac Efron", "John le Carré", "Snoop Dogg",
+            "Kim Kardashian", "Catherine Deneuve", "Pelé", "Dracula",
+            "Pablo Picasso", "Hillary Clinton", "Sylvia Plath", "Bill Gates",
+            "Bob Ross", "Diego Maradona", "John Keats",
+
+            "Anthony Kiedis", "David Schwimmer", "Kendall Jenner", "Matthew McConaughey",
+            "Art Garfunkel", "Emma Stone", "Marie Curie", "Gordon Ramsay",
+            "Carl Sagan", "Martin Luther", "Leonardo DiCaprio", "Anne Hathaway",
+            "Robert Louis Stevenson", "Claude Monet", "Georgia O'Keeffe",
+            "Maggie Gyllenhaal", "Martin Scorsese", "Owen Wilson", "Indira Gandhi",
+            "Joe Biden", "Goldie Hawn", "Scarlett Johansson", "Miley Cyrus",
+            "Katherine Heigl", "Andrew Carnegie", "Rita Ora", "Bruce Lee",
+            "Jon Stewart", "C. S. Lewis", "Mark Twain",
+
+            "Woody Allen", "Britney Spears", "Brendan Fraser", "Jay-Z", "Walt Disney",
+            "Judd Apatow", "Noam Chomsky", "Nicki Minaj", "Judi Dench",
+            "Emily Dickinson", "Hailee Steinfeld", "Frank Sinatra", "Taylor Swift",
+            "Vanessa Hudgens", "Don Johnson", "Jane Austen", "Milla Jovovich",
+            "Brad Pitt", "Jake Gyllenhaal", "Jonah Hill", "Samuel L. Jackson",
+            "Giacomo Puccini", "Humphrey Bogart", "Ricky Martin", "Annie Lennox",
+            "Jared Leto", "Timothée Chalamet", "Denzel Washington", "Jude Law",
+            "LeBron James", "Anthony Hopkins"
+]
 
 
             start_of_year = dt.datetime(2000,1,1)
             bday_2000 = dt.datetime(2000, month, day)
             days_passed = (bday_2000 - start_of_year).days
             famous_bday = famous_ppl_bdays[days_passed]
+
             print("You were born on the same day as", famous_bday, ". If you dont know who that is, search it up!")
 
 
