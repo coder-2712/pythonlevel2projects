@@ -47,6 +47,12 @@ scenery_pen = turtle.Turtle()
 scenery_pen.hideturtle()
 scenery_pen.speed(0)
 scenery_pen.penup()
+
+time_pen = turtle.Turtle()
+time_pen.hideturtle()
+time_pen.speed(0)
+time_pen.penup()
+
 def blend_colour(colour1, colour2, t):
 
     red = int(colour1[0] + (colour2[0] - colour1[0]) * t)
@@ -1086,7 +1092,7 @@ def update_clock():
     current_time = datetime.now()
     elapsed_time = current_time - last_real_time
 
-    game_time += elapsed_time * 720
+    game_time += elapsed_time * 60
 
     last_real_time = current_time
 
