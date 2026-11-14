@@ -1,6 +1,6 @@
 
 import turtle
-from datetime import datetime, timedelta
+from datetime import datetime as dt, timedelta
 from math import sin, pi
 import random
 
@@ -48,10 +48,10 @@ scenery_pen.hideturtle()
 scenery_pen.speed(0)
 scenery_pen.penup()
 
-time_pen = turtle.Turtle()
-time_pen.hideturtle()
-time_pen.speed(0)
-time_pen.penup()
+t = turtle.Turtle()
+t.hideturtle()
+t.speed(0)
+t.penup()
 
 def blend_colour(colour1, colour2, t):
 
@@ -665,7 +665,7 @@ def draw_tree(x, base_y, scale, phase, game_time):
 
     # Keep the trunk rooted; the blocky canopy shifts by only a couple
     # of pixels so it still feels like a pixel-RPG environment.
-    sway_time = datetime.now().timestamp()
+    sway_time = dt.now().timestamp()
     sway = round(sin(sway_time * 1.0 + phase) * 2 * scale)
 
     trunk_colour = (105, 70, 48)
@@ -984,9 +984,9 @@ def draw_sun(game_time):
         sun_pen.circle(size)
         sun_pen.end_fill()
 
-game_time = datetime.now()
-last_real_time = datetime.now()
-last_sky_update = datetime.now()
+game_time = dt.now()
+last_real_time = dt.now()
+last_sky_update = dt.now()
 
 def drawmoon(game_time):
 
@@ -1084,16 +1084,31 @@ def drawmoon(game_time):
         moon_pen.goto(x + 5, y + 18)
         moon_pen.dot(2, (255, 252, 235))
 
+def draw_clock():
+    t.clear()
+    t.penup()
+    t.goto(10, 0)
+
+    if game_time.hour >= 18 or game_time.hour < 6:
+        t.color("white")
+    else:
+        t.color("black")
+
+    t.write(
+        game_time.strftime("%I:%M %p"),
+        align="center",
+        font=("Courier", 30, "bold")
+    )
+
 
 def update_clock():
 
     global game_time, last_real_time, last_sky_update
 
-    current_time = datetime.now()
+    current_time = dt.now()
     elapsed_time = current_time - last_real_time
 
-    game_time += elapsed_time * 60
-
+    game_time += elapsed_time
     last_real_time = current_time
 
     if current_time - last_sky_update >= timedelta(seconds=1):
@@ -1108,16 +1123,17 @@ def update_clock():
         screen.title(
             "Pixel Weather | " + game_time.strftime("%I:%M %p")
         )
+
     move_clouds()
     draw_sun(game_time)
     draw_ground(game_time)
     drawmoon(game_time)
     draw_clouds(game_time)
-
+    draw_clock()
 
     screen.update()
-
     screen.ontimer(update_clock, 30)
+
 
 sky_colours = get_sky_colours(game_time)
 
@@ -1127,13 +1143,14 @@ draw_stars(game_time, sky_colours)
 draw_ground(game_time)
 drawmoon(game_time)
 draw_clouds(game_time)
-
+draw_clock()
 
 screen.update()
 
 screen.title(
-    "Pixel Weather | " + game_time.strftime("%I:%M %p")
+    "Animated Clock Time: " + game_time.strftime("%I:%M %p")
 )
+
 screen.ontimer(update_clock, 30)
 
 turtle.done()
