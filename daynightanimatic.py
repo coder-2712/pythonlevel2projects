@@ -888,7 +888,6 @@ def draw_scenery(game_time):
 
     scenery_pen.clear()
 
-    # Exactly two trees, at opposite sides of the cottage.
     left_x = -width * 0.34
     right_x = width * 0.36
 
