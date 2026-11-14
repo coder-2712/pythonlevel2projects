@@ -702,8 +702,6 @@ def draw_tree(x, base_y, scale, phase, game_time):
         for column in columns:
             leaf_x = x + column * tile + row_sway * scale
             leaf_y = base_y + offset_y * scale
-
-            # Alternate darker tiles to create visible pixel clusters.
             if (column + row_index) % 3 == 0:
                 leaf_colour = dark_leaf
             else:
@@ -748,7 +746,6 @@ def draw_house(game_time):
     )
     is_night = minutes >= 18 * 60 + 30 or minutes < 5 * 60 + 30
 
-    # Dark outline and warm, blocky walls.
     draw_pixel_rect(
         x - house_width / 2,
         base_y,
