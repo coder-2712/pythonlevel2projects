@@ -361,8 +361,6 @@ def draw_clouds(game_time):
 
     cloud_pen.clear()
 
-    # Get current colours based on time of day
-
     highlight, shadow = get_cloud_colours(game_time)
 
     for cloud in clouds:
@@ -381,22 +379,13 @@ def move_clouds():
 
         x, y, scale, shade, design, direction = cloud
 
-        # Move according to individual direction
 
         cloud[0] += 0.35 * scale * direction
-
-        # Calculate cloud width for accurate wrapping
-
         cloud_width = 14 * 9 * scale
         margin = cloud_width / 2 + 20
-
-        # Moving right: reappear on left
-
         if direction == 1 and cloud[0] > width / 2 + margin:
 
             cloud[0] = -width / 2 - margin
-
-        # Moving left: reappear on right
 
         elif direction == -1 and cloud[0] < -width / 2 - margin:
 
@@ -584,7 +573,6 @@ def draw_ground(game_time):
         near
     )
 
-    # Draw the cottage and two trees between the hills and foreground grass.
     draw_scenery(game_time)
 
     drawgrass(foreground)
@@ -593,18 +581,14 @@ def draw_ground(game_time):
 
     ground_pen.width(1)
 
-# TREES AND HOUSE
-
-# Foliage colours smoothly change with the time of day.
-# Each keyframe contains the main leaf colour and a darker leaf colour.
 
 foliage_keyframes = [
-    (0, ((38, 67, 65), (27, 49, 53))),          # Night
+    (0, ((38, 67, 65), (27, 49, 53))),      
     (270, ((38, 67, 65), (27, 49, 53))),
-    (360, ((151, 157, 91), (102, 120, 68))),    # Sunrise
-    (480, ((91, 151, 70), (54, 111, 58))),      # Day
+    (360, ((151, 157, 91), (102, 120, 68))),  
+    (480, ((91, 151, 70), (54, 111, 58))),   
     (960, ((91, 151, 70), (54, 111, 58))),
-    (1080, ((165, 119, 65), (112, 91, 57))),    # Sunset
+    (1080, ((165, 119, 65), (112, 91, 57))),  
     (1200, ((38, 67, 65), (27, 49, 53))),
     (1440, ((38, 67, 65), (27, 49, 53)))
 ]
@@ -662,9 +646,6 @@ def draw_tree(x, base_y, scale, phase, game_time):
 
     main_leaf, dark_leaf = get_foliage_colours(game_time)
     highlight_leaf = blend_colour(main_leaf, (220, 225, 150), 0.28)
-
-    # Keep the trunk rooted; the blocky canopy shifts by only a couple
-    # of pixels so it still feels like a pixel-RPG environment.
     sway_time = dt.now().timestamp()
     sway = round(sin(sway_time * 1.0 + phase) * 2 * scale)
 
@@ -675,7 +656,6 @@ def draw_tree(x, base_y, scale, phase, game_time):
     trunk_width = 16 * scale
     trunk_height = 57 * scale
 
-    # Chunky rectangular trunk with a darker side.
     draw_pixel_rect(
         x - trunk_width / 2,
         base_y,
@@ -691,7 +671,6 @@ def draw_tree(x, base_y, scale, phase, game_time):
         trunk_shadow
     )
 
-    # Short square-ended branches, partly hidden by the foliage.
     draw_pixel_rect(
         x - 29 * scale,
         base_y + 48 * scale,
@@ -707,8 +686,6 @@ def draw_tree(x, base_y, scale, phase, game_time):
         branch_colour
     )
 
-    # Each row is made from square tiles. The stepped outline gives
-    # the tree a deliberately chunky, pixel-art silhouette.
     tile = 16 * scale
     canopy_rows = [
         (126, [-1, 0, 1]),
@@ -740,7 +717,7 @@ def draw_tree(x, base_y, scale, phase, game_time):
                 leaf_colour
             )
 
-    # A few small square highlights, rather than round dots.
+
     highlight_tiles = [
         (-1, 110), (2, 94), (-2, 78), (1, 62)
     ]
@@ -758,7 +735,6 @@ def draw_tree(x, base_y, scale, phase, game_time):
 
 def draw_house(game_time):
 
-    # Small pixel-art cottage between the two trees.
     x = width * 0.035
     base_y = get_grass_height(x) - 2
 
@@ -788,7 +764,6 @@ def draw_house(game_time):
         (224, 197, 153)
     )
 
-    # A little darker strip along the bottom gives the cottage a base.
     draw_pixel_rect(
         x - house_width / 2 + 4,
         base_y + 4,
@@ -797,7 +772,6 @@ def draw_house(game_time):
         (183, 145, 108)
     )
 
-    # Chimney, drawn before the roof so it sits behind it.
     draw_pixel_rect(
         x + 25,
         base_y + 91,
@@ -812,8 +786,6 @@ def draw_house(game_time):
         24,
         (151, 83, 67)
     )
-
-    # Stepped roof made from stacked rectangles — no smooth triangle.
     roof_layers = [
         (132, 12, (91, 48, 45)),
         (108, 12, (119, 57, 49)),
@@ -838,8 +810,6 @@ def draw_house(game_time):
             layer_height - 3,
             roof_colour
         )
-
-    # Square door with a tiny pixel doorknob.
     draw_pixel_rect(
         x - 10,
         base_y + 4,
@@ -862,7 +832,6 @@ def draw_house(game_time):
         (239, 195, 105)
     )
 
-    # Two square windows with dark frames and pixel crossbars.
     window_colour = (255, 218, 125) if is_night else (145, 194, 207)
 
     for window_x in (x - 34, x + 34):
@@ -897,7 +866,6 @@ def draw_house(game_time):
             (82, 60, 49)
         )
 
-    # Small roof-edge pixels add a little definition.
     draw_pixel_rect(
         x - 68,
         base_y + wall_height - 2,
