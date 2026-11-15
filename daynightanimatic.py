@@ -584,7 +584,7 @@ def draw_ground(game_time):
     grounddraw.width(1)
 
 
-foliage_keyframes = [
+treeframes = [
     (0, ((38, 67, 65), (27, 49, 53))),      
     (270, ((38, 67, 65), (27, 49, 53))),
     (360, ((151, 157, 91), (102, 120, 68))),  
@@ -604,10 +604,10 @@ def get_foliage_colours(game_time):
         + game_time.second / 60
     )
 
-    for i in range(len(foliage_keyframes) - 1):
+    for i in range(len(treeframes) - 1):
 
-        start_time, start_colours = foliage_keyframes[i]
-        end_time, end_colours = foliage_keyframes[i + 1]
+        start_time, start_colours = treeframes[i]
+        end_time, end_colours = treeframes[i + 1]
 
         if start_time <= minutes < end_time:
 
@@ -627,7 +627,7 @@ def get_foliage_colours(game_time):
 
             return main, dark
 
-    return foliage_keyframes[0][1]
+    return treeframes[0][1]
 
 
 def draw_pixel_rect(x, y, rect_width, rect_height, colour):
@@ -917,8 +917,8 @@ def draw_sun(game_time):
         + game_time.minute
         + game_time.second / 60
     )
-    sunrise = 300
-    sunset_time = 1080
+    sunrise = 250
+    sunset_time = 1190
     if minutes < sunrise or minutes >= sunset_time:
         return
     progress = (minutes - sunrise) / (sunset_time - sunrise)
@@ -1073,7 +1073,7 @@ def update_clock():
     current_time = dt.now()
     elapsed_time = current_time - last_real_time
 
-    game_time += elapsed_time * 720
+    game_time += elapsed_time*720 * 720
     last_real_time = current_time
 
     if current_time - last_sky_update >= timedelta(seconds=1):
