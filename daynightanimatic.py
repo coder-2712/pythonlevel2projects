@@ -188,7 +188,7 @@ for i in range(100):
     stars.append((x, y, size))
 
 
-def get_star_opacity(game_time):
+def staropacity(game_time):
 
     minutes = game_time.hour * 60 + game_time.minute + game_time.second / 60
 
@@ -208,7 +208,7 @@ def draw_stars(game_time, sky_colours):
 
     star_pen.clear()
 
-    opacity = get_star_opacity(game_time)
+    opacity = staropacity(game_time)
 
     if opacity <= 0:
         return
