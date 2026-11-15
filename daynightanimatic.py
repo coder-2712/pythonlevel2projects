@@ -6,6 +6,8 @@ import random
 
 # its supposed to be synced to real time but i added a a part that can speed it up so that the animation is visible, thats why its 720x.
 
+# its supposed to be synced to real time but i added a a part that can speed it up so that the animation is visible, thats why its 720x.
+
 screen = turtle.Screen()
 screen.setup(width=1.0, height=1.0)
 screen.colormode(255)
@@ -917,8 +919,8 @@ def draw_sun(game_time):
         + game_time.minute
         + game_time.second / 60
     )
-    sunrise = 250
-    sunset_time = 1190
+    sunrise = 300
+    sunset_time = 1080
     if minutes < sunrise or minutes >= sunset_time:
         return
     progress = (minutes - sunrise) / (sunset_time - sunrise)
@@ -1073,7 +1075,7 @@ def update_clock():
     current_time = dt.now()
     elapsed_time = current_time - last_real_time
 
-    game_time += elapsed_time*720 * 720
+    game_time += elapsed_time * 720
     last_real_time = current_time
 
     if current_time - last_sky_update >= timedelta(seconds=1):
