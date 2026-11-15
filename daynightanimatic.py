@@ -631,7 +631,6 @@ def get_foliage_colours(game_time):
 
 
 def draw_pixel_rect(x, y, rect_width, rect_height, colour):
-    """Draw a crisp, filled rectangle from its bottom-left corner."""
     bgdraw.penup()
     bgdraw.goto(x, y)
     bgdraw.color(colour)
@@ -644,7 +643,7 @@ def draw_pixel_rect(x, y, rect_width, rect_height, colour):
     bgdraw.penup()
 
 
-def draw_tree(x, base_y, scale, phase, game_time):
+def tree(x, base_y, scale, phase, game_time):
 
     main_leaf, dark_leaf = get_foliage_colours(game_time)
     highlight_leaf = blend_colour(main_leaf, (220, 225, 150), 0.28)
@@ -890,7 +889,7 @@ def draw_scenery(game_time):
     left_x = -width * 0.34
     right_x = width * 0.36
 
-    draw_tree(
+    tree(
         left_x,
         get_grass_height(left_x) - 3,
         1.0,
@@ -898,7 +897,7 @@ def draw_scenery(game_time):
         game_time
     )
 
-    draw_tree(
+    tree(
         right_x,
         get_grass_height(right_x) - 3,
         0.78,
