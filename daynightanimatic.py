@@ -20,35 +20,35 @@ pen.hideturtle()
 pen.speed(0)
 pen.penup()
 
-cloud_pen = turtle.Turtle()
-cloud_pen.hideturtle()
-cloud_pen.speed(0)
-cloud_pen.penup()
+cloud = turtle.Turtle()
+cloud.hideturtle()
+cloud.speed(0)
+cloud.penup()
 
-sun_pen = turtle.Turtle()
-sun_pen.hideturtle()
-sun_pen.speed(0)
-sun_pen.penup()
+sun = turtle.Turtle()
+sun.hideturtle()
+sun.speed(0)
+sun.penup()
 
 star_pen = turtle.Turtle()
 star_pen.hideturtle()
 star_pen.speed(0)
 star_pen.penup()
 
-ground_pen = turtle.Turtle()
-ground_pen.hideturtle()
-ground_pen.speed(0)
-ground_pen.penup()
+grounddraw = turtle.Turtle()
+grounddraw.hideturtle()
+grounddraw.speed(0)
+grounddraw.penup()
 
-moon_pen = turtle.Turtle()
-moon_pen.hideturtle()
-moon_pen.speed(0)
-moon_pen.penup()
+moon = turtle.Turtle()
+moon.hideturtle()
+moon.speed(0)
+moon.penup()
 
-scenery_pen = turtle.Turtle()
-scenery_pen.hideturtle()
-scenery_pen.speed(0)
-scenery_pen.penup()
+bgdraw = turtle.Turtle()
+bgdraw.hideturtle()
+bgdraw.speed(0)
+bgdraw.penup()
 
 t = turtle.Turtle()
 t.hideturtle()
@@ -344,24 +344,24 @@ def draw_pixel_cloud(x, y, scale, shade, design, highlight, shadow):
 
 
                 if row >= len(shape) - 2:
-                    cloud_pen.color(dark_shadow)
+                    cloud.color(dark_shadow)
                 else:
-                    cloud_pen.color(white)
+                    cloud.color(white)
 
-                cloud_pen.goto(px, py)
-                cloud_pen.begin_fill()
+                cloud.goto(px, py)
+                cloud.begin_fill()
 
-                cloud_pen.goto(px + pixel_size, py)
-                cloud_pen.goto(px + pixel_size, py + pixel_size)
-                cloud_pen.goto(px, py + pixel_size)
-                cloud_pen.goto(px, py)
+                cloud.goto(px + pixel_size, py)
+                cloud.goto(px + pixel_size, py + pixel_size)
+                cloud.goto(px, py + pixel_size)
+                cloud.goto(px, py)
 
-                cloud_pen.end_fill()
+                cloud.end_fill()
 
 
 def draw_clouds(game_time):
 
-    cloud_pen.clear()
+    cloud.clear()
 
     highlight, shadow = get_cloud_colours(game_time)
 
@@ -470,12 +470,12 @@ def get_ground_colours(game_time):
 
 def drawhill(baseheight, amplitude, phase, colour):
 
-    ground_pen.color(colour)
+    grounddraw.color(colour)
 
-    ground_pen.goto(-width / 2, -height / 2)
-    ground_pen.begin_fill()
+    grounddraw.goto(-width / 2, -height / 2)
+    grounddraw.begin_fill()
 
-    ground_pen.goto(-width / 2, baseheight)
+    grounddraw.goto(-width / 2, baseheight)
 
     steps = 45
 
@@ -489,12 +489,12 @@ def drawhill(baseheight, amplitude, phase, colour):
             + sin((x / width * 4 * pi) + phase) * amplitude * 0.25
         )
 
-        ground_pen.goto(x, y)
+        grounddraw.goto(x, y)
 
-    ground_pen.goto(width / 2, -height / 2)
-    ground_pen.goto(-width / 2, -height / 2)
+    grounddraw.goto(width / 2, -height / 2)
+    grounddraw.goto(-width / 2, -height / 2)
 
-    ground_pen.end_fill()
+    grounddraw.end_fill()
 
 def get_grass_height(x):
 
@@ -507,23 +507,23 @@ def get_grass_height(x):
 
 def drawgrass(colour):
 
-    ground_pen.color(colour)
+    grounddraw.color(colour)
 
-    ground_pen.goto(-width / 2, -height / 2)
-    ground_pen.begin_fill()
+    grounddraw.goto(-width / 2, -height / 2)
+    grounddraw.begin_fill()
 
-    ground_pen.goto(-width / 2, get_grass_height(-width / 2))
+    grounddraw.goto(-width / 2, get_grass_height(-width / 2))
 
     for i in range(45):
 
         x = -width / 2 + width * i / 44
 
-        ground_pen.goto(x, get_grass_height(x))
+        grounddraw.goto(x, get_grass_height(x))
 
-    ground_pen.goto(width / 2, -height / 2)
-    ground_pen.goto(-width / 2, -height / 2)
+    grounddraw.goto(width / 2, -height / 2)
+    grounddraw.goto(-width / 2, -height / 2)
 
-    ground_pen.end_fill()
+    grounddraw.end_fill()
 
 
 
@@ -540,25 +540,25 @@ def grassdetail():
 
         y = get_grass_height(x)
 
-        ground_pen.color((40, 105, 55))
+        grounddraw.color((40, 105, 55))
 
-        ground_pen.width(2)
+        grounddraw.width(2)
 
-        ground_pen.goto(x, y + 2)
-        ground_pen.pendown()
-        ground_pen.goto(x - 3, y + 9)
+        grounddraw.goto(x, y + 2)
+        grounddraw.pendown()
+        grounddraw.goto(x - 3, y + 9)
 
-        ground_pen.penup()
-        ground_pen.goto(x, y + 2)
-        ground_pen.pendown()
-        ground_pen.goto(x + 3, y + 8)
+        grounddraw.penup()
+        grounddraw.goto(x, y + 2)
+        grounddraw.pendown()
+        grounddraw.goto(x + 3, y + 8)
 
-        ground_pen.penup()
+        grounddraw.penup()
 
 
 def draw_ground(game_time):
 
-    ground_pen.clear()
+    grounddraw.clear()
 
     distant, near, foreground = get_ground_colours(game_time)
 
@@ -581,7 +581,7 @@ def draw_ground(game_time):
 
     grassdetail()
 
-    ground_pen.width(1)
+    grounddraw.width(1)
 
 
 foliage_keyframes = [
@@ -632,16 +632,16 @@ def get_foliage_colours(game_time):
 
 def draw_pixel_rect(x, y, rect_width, rect_height, colour):
     """Draw a crisp, filled rectangle from its bottom-left corner."""
-    scenery_pen.penup()
-    scenery_pen.goto(x, y)
-    scenery_pen.color(colour)
-    scenery_pen.begin_fill()
-    scenery_pen.goto(x + rect_width, y)
-    scenery_pen.goto(x + rect_width, y + rect_height)
-    scenery_pen.goto(x, y + rect_height)
-    scenery_pen.goto(x, y)
-    scenery_pen.end_fill()
-    scenery_pen.penup()
+    bgdraw.penup()
+    bgdraw.goto(x, y)
+    bgdraw.color(colour)
+    bgdraw.begin_fill()
+    bgdraw.goto(x + rect_width, y)
+    bgdraw.goto(x + rect_width, y + rect_height)
+    bgdraw.goto(x, y + rect_height)
+    bgdraw.goto(x, y)
+    bgdraw.end_fill()
+    bgdraw.penup()
 
 
 def draw_tree(x, base_y, scale, phase, game_time):
@@ -880,12 +880,12 @@ def draw_house(game_time):
         (78, 48, 45)
     )
 
-    scenery_pen.width(1)
+    bgdraw.width(1)
 
 
 def draw_scenery(game_time):
 
-    scenery_pen.clear()
+    bgdraw.clear()
 
     left_x = -width * 0.34
     right_x = width * 0.36
@@ -911,7 +911,7 @@ def draw_scenery(game_time):
 
 def draw_sun(game_time):
 
-    sun_pen.clear()
+    sun.clear()
 
     minutes = (
         game_time.hour * 60
@@ -944,11 +944,11 @@ def draw_sun(game_time):
 
     for size, colour in sun_layers:
 
-        sun_pen.goto(x, y - size)
-        sun_pen.color(colour)
-        sun_pen.begin_fill()
-        sun_pen.circle(size)
-        sun_pen.end_fill()
+        sun.goto(x, y - size)
+        sun.color(colour)
+        sun.begin_fill()
+        sun.circle(size)
+        sun.end_fill()
 
 game_time = dt.now()
 last_real_time = dt.now()
@@ -956,7 +956,7 @@ last_sky_update = dt.now()
 
 def drawmoon(game_time):
 
-    moon_pen.clear()
+    moon.clear()
 
     minutes = (
         game_time.hour * 60
@@ -1019,17 +1019,17 @@ def drawmoon(game_time):
             0.80
         )
 
-        moon_pen.goto(x, y)
-        moon_pen.dot(110, glow1)
+        moon.goto(x, y)
+        moon.dot(110, glow1)
 
-        moon_pen.goto(x, y)
-        moon_pen.dot(90, glow2)
+        moon.goto(x, y)
+        moon.dot(90, glow2)
 
-        moon_pen.goto(x, y)
-        moon_pen.dot(70, glow3)
+        moon.goto(x, y)
+        moon.dot(70, glow3)
 
-        moon_pen.goto(x, y)
-        moon_pen.dot(54, (255, 244, 210))
+        moon.goto(x, y)
+        moon.dot(54, (255, 244, 210))
 
         craters = [
             (-9, 8, 8),
@@ -1041,14 +1041,14 @@ def drawmoon(game_time):
 
         for cx, cy, size in craters:
 
-            moon_pen.goto(x + cx, y + cy)
-            moon_pen.dot(size, (225, 215, 190))
+            moon.goto(x + cx, y + cy)
+            moon.dot(size, (225, 215, 190))
 
-        moon_pen.goto(x - 13, y + 15)
-        moon_pen.dot(3, (255, 252, 235))
+        moon.goto(x - 13, y + 15)
+        moon.dot(3, (255, 252, 235))
 
-        moon_pen.goto(x + 5, y + 18)
-        moon_pen.dot(2, (255, 252, 235))
+        moon.goto(x + 5, y + 18)
+        moon.dot(2, (255, 252, 235))
 
 def draw_clock():
     t.clear()
